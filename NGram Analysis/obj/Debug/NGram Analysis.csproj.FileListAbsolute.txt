@@ -1,0 +1,9 @@
+C:\Users\ozgur\source\repos\NGram Analysis\NGram Analysis\bin\Debug\NGram Analysis.exe.config
+C:\Users\ozgur\source\repos\NGram Analysis\NGram Analysis\bin\Debug\NGram Analysis.exe
+C:\Users\ozgur\source\repos\NGram Analysis\NGram Analysis\bin\Debug\NGram Analysis.pdb
+C:\Users\ozgur\source\repos\NGram Analysis\NGram Analysis\obj\Debug\NGram Analysis.csprojAssemblyReference.cache
+C:\Users\ozgur\source\repos\NGram Analysis\NGram Analysis\obj\Debug\NGram_Analysis.Form1.resources
+C:\Users\ozgur\source\repos\NGram Analysis\NGram Analysis\obj\Debug\NGram_Analysis.Properties.Resources.resources
+C:\Users\ozgur\source\repos\NGram Analysis\NGram Analysis\obj\Debug\NGram Analysis.csproj.GenerateResource.cache
+C:\Users\ozgur\source\repos\NGram Analysis\NGram Analysis\obj\Debug\NGram Analysis.exe
+C:\Users\ozgur\source\repos\NGram Analysis\NGram Analysis\obj\Debug\NGram Analysis.pdb
