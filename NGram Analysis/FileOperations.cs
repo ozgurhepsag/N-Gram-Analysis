@@ -33,12 +33,12 @@ namespace NGram_Analysis
 
         private void FillDictionaries()
         {
-            readFiles(unigram);
-            readFiles(bigram);
-            readFiles(trigram);
+            ReadFiles(unigram);
+            ReadFiles(bigram);
+            ReadFiles(trigram);
         }
 
-        private void readFiles(NGramDictionary dict)
+        private void ReadFiles(NGramDictionary dict)
         {
             var txtFiles = Directory.EnumerateFiles(SOURCE_DIR, "*.txt");
             foreach (var item in txtFiles)
@@ -50,9 +50,16 @@ namespace NGram_Analysis
             }
         }
 
+        public List<KeyValuePair<NGram, int>> SortNGram(NGramDictionary dict)
+        {
+            List<KeyValuePair<NGram, int>> sortedList = dict.ToList();
+            sortedList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+            return sortedList;
+        }
+
         private string CleanText(string text)
         {
-            text = Regex.Replace(text, "[\"',.;:/?!()\\-]+", ""); // first replace delimiters
+            text = Regex.Replace(text, "[\"',.*^%#=+;:/?!()\\-]+", ""); // first replace delimiters
             text = Regex.Replace(text, "\\s+", " "); // then replace empty spaces
             return text;
         }

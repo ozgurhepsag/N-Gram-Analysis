@@ -123,6 +123,11 @@ namespace NGram_Analysis
 
             return new NGramDictionary(extractor, nGrams);
         }
+
+        public List<KeyValuePair<NGram, int>> ToList()
+        {
+            return nGrams.ToList();
+        }
     }
 
 
