@@ -17,6 +17,7 @@ namespace NGram_Analysis
         int Bigram = 2;
         int Trigram = 3;
 
+        private long[] miliseconds;
         private NGramDictionary unigram;
         private NGramDictionary bigram;
         private NGramDictionary trigram;
@@ -24,6 +25,8 @@ namespace NGram_Analysis
         public FileOperations(string path)
         {
             SOURCE_DIR = path;
+
+            miliseconds = new long[3];
 
             unigram = new NGramDictionary(new NGramExtractor(Unigram));
             bigram = new NGramDictionary(new NGramExtractor(Bigram));
@@ -33,9 +36,23 @@ namespace NGram_Analysis
 
         private void FillDictionaries()
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             ReadFiles(unigram);
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            miliseconds[0] = elapsedMs;
+
+            watch = System.Diagnostics.Stopwatch.StartNew();
             ReadFiles(bigram);
+            watch.Stop();
+            elapsedMs = watch.ElapsedMilliseconds;
+            miliseconds[1] = elapsedMs;
+
+            watch = System.Diagnostics.Stopwatch.StartNew();
             ReadFiles(trigram);
+            watch.Stop();
+            elapsedMs = watch.ElapsedMilliseconds;
+            miliseconds[2] = elapsedMs;
         }
 
         private void ReadFiles(NGramDictionary dict)
@@ -50,18 +67,18 @@ namespace NGram_Analysis
             }
         }
 
-        public List<KeyValuePair<NGram, int>> SortNGram(NGramDictionary dict)
-        {
-            List<KeyValuePair<NGram, int>> sortedList = dict.ToList();
-            sortedList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
-            return sortedList;
-        }
-
         private string CleanText(string text)
         {
             text = Regex.Replace(text, "[\"',.*^%#=+;:/?!()\\-]+", ""); // first replace delimiters
             text = Regex.Replace(text, "\\s+", " "); // then replace empty spaces
             return text;
+        }
+
+        public List<KeyValuePair<NGram, int>> SortNGram(NGramDictionary dict)
+        {
+            List<KeyValuePair<NGram, int>> sortedList = dict.ToList();
+            sortedList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+            return sortedList;
         }
 
         public NGramDictionary GetUnigram()
@@ -77,6 +94,11 @@ namespace NGram_Analysis
         public NGramDictionary GetTrigram()
         {
             return trigram;
+        }
+
+        public long[] GetMiliseconds()
+        {
+            return miliseconds;
         }
 
     }

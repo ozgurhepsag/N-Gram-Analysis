@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace NGram_Analysis
 {
-    /// <summary>
-    ///     Represents an n-gram object which consists of n tokens.
-    /// </summary>
     public class NGram
     {
         private const string Delimiter = " ";

@@ -24,17 +24,26 @@ namespace NGram_Analysis
 
         private void BrowseFileBtn_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                browseFileName.Text = openFileDialog1.SelectedPath;
-                fileOp = new FileOperations(browseFileName.Text);
-                sortedUnigram = fileOp.SortNGram(fileOp.GetUnigram());
-                FillGridViews(dataGridView3, sortedUnigram);
-                sortedBigram = fileOp.SortNGram(fileOp.GetBigram());
-                FillGridViews(dataGridView2, sortedBigram);
-                sortedTrigram = fileOp.SortNGram(fileOp.GetTrigram());
-                FillGridViews(dataGridView1, sortedTrigram);
+                FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    browseFileName.Text = openFileDialog1.SelectedPath;
+                    fileOp = new FileOperations(browseFileName.Text);
+                    sortedUnigram = fileOp.SortNGram(fileOp.GetUnigram());
+                    FillGridViews(unigramDataGridView, sortedUnigram);
+                    sortedBigram = fileOp.SortNGram(fileOp.GetBigram());
+                    FillGridViews(bigramDataGridView, sortedBigram);
+                    sortedTrigram = fileOp.SortNGram(fileOp.GetTrigram());
+                    FillGridViews(trigramDataGridView, sortedTrigram);
+                    ShowMiliseconds();
+                }
+            }
+            catch(Exception)
+            {
+                var formPopup = new Warning();
+                formPopup.Show(this);
             }
         }
 
@@ -50,5 +59,14 @@ namespace NGram_Analysis
                 dataGridView.Rows.Add(row);
             }
         }
+
+        private void ShowMiliseconds()
+        {
+            long[] miliseconds = fileOp.GetMiliseconds();
+            unigramMsec.Text = miliseconds[0].ToString() + " msec";
+            bigramMsec.Text = miliseconds[1].ToString() + " msec";
+            trigramMsec.Text = miliseconds[2].ToString() + " msec";
+        }
+
     }
 }

@@ -31,16 +31,19 @@
             this.groupBoxInput = new System.Windows.Forms.GroupBox();
             this.browseFileName = new System.Windows.Forms.TextBox();
             this.browseFileBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.trigramDataGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.unigramDataGridView = new System.Windows.Forms.DataGridView();
+            this.bigramDataGridView = new System.Windows.Forms.DataGridView();
+            this.unigramMsec = new System.Windows.Forms.Label();
+            this.bigramMsec = new System.Windows.Forms.Label();
+            this.trigramMsec = new System.Windows.Forms.Label();
             this.groupBoxInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trigramDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unigramDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bigramDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxInput
@@ -78,18 +81,18 @@
             this.browseFileBtn.UseVisualStyleBackColor = true;
             this.browseFileBtn.Click += new System.EventHandler(this.BrowseFileBtn_Click);
             // 
-            // dataGridView1
+            // trigramDataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(903, 157);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(360, 346);
-            this.dataGridView1.TabIndex = 4;
+            this.trigramDataGridView.AllowUserToAddRows = false;
+            this.trigramDataGridView.AllowUserToDeleteRows = false;
+            this.trigramDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.trigramDataGridView.Location = new System.Drawing.Point(903, 157);
+            this.trigramDataGridView.Name = "trigramDataGridView";
+            this.trigramDataGridView.ReadOnly = true;
+            this.trigramDataGridView.RowHeadersWidth = 51;
+            this.trigramDataGridView.RowTemplate.Height = 24;
+            this.trigramDataGridView.Size = new System.Drawing.Size(360, 346);
+            this.trigramDataGridView.TabIndex = 4;
             // 
             // label1
             // 
@@ -121,51 +124,78 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Top Trigrams";
             // 
-            // dataGridView3
+            // unigramDataGridView
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(42, 157);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(360, 346);
-            this.dataGridView3.TabIndex = 12;
+            this.unigramDataGridView.AllowUserToAddRows = false;
+            this.unigramDataGridView.AllowUserToDeleteRows = false;
+            this.unigramDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.unigramDataGridView.Location = new System.Drawing.Point(42, 157);
+            this.unigramDataGridView.Name = "unigramDataGridView";
+            this.unigramDataGridView.ReadOnly = true;
+            this.unigramDataGridView.RowHeadersWidth = 51;
+            this.unigramDataGridView.RowTemplate.Height = 24;
+            this.unigramDataGridView.Size = new System.Drawing.Size(360, 346);
+            this.unigramDataGridView.TabIndex = 12;
             // 
-            // dataGridView2
+            // bigramDataGridView
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(474, 157);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(360, 346);
-            this.dataGridView2.TabIndex = 13;
+            this.bigramDataGridView.AllowUserToAddRows = false;
+            this.bigramDataGridView.AllowUserToDeleteRows = false;
+            this.bigramDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.bigramDataGridView.Location = new System.Drawing.Point(474, 157);
+            this.bigramDataGridView.Name = "bigramDataGridView";
+            this.bigramDataGridView.ReadOnly = true;
+            this.bigramDataGridView.RowHeadersWidth = 51;
+            this.bigramDataGridView.RowTemplate.Height = 24;
+            this.bigramDataGridView.Size = new System.Drawing.Size(360, 346);
+            this.bigramDataGridView.TabIndex = 13;
+            // 
+            // unigramMsec
+            // 
+            this.unigramMsec.AutoSize = true;
+            this.unigramMsec.Location = new System.Drawing.Point(172, 521);
+            this.unigramMsec.Name = "unigramMsec";
+            this.unigramMsec.Size = new System.Drawing.Size(0, 17);
+            this.unigramMsec.TabIndex = 14;
+            // 
+            // bigramMsec
+            // 
+            this.bigramMsec.AutoSize = true;
+            this.bigramMsec.Location = new System.Drawing.Point(623, 521);
+            this.bigramMsec.Name = "bigramMsec";
+            this.bigramMsec.Size = new System.Drawing.Size(0, 17);
+            this.bigramMsec.TabIndex = 15;
+            // 
+            // trigramMsec
+            // 
+            this.trigramMsec.AutoSize = true;
+            this.trigramMsec.Location = new System.Drawing.Point(1059, 521);
+            this.trigramMsec.Name = "trigramMsec";
+            this.trigramMsec.Size = new System.Drawing.Size(0, 17);
+            this.trigramMsec.TabIndex = 16;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1330, 534);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView3);
+            this.ClientSize = new System.Drawing.Size(1330, 563);
+            this.Controls.Add(this.trigramMsec);
+            this.Controls.Add(this.bigramMsec);
+            this.Controls.Add(this.unigramMsec);
+            this.Controls.Add(this.bigramDataGridView);
+            this.Controls.Add(this.unigramDataGridView);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.trigramDataGridView);
             this.Controls.Add(this.groupBoxInput);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "N-Gram Analysis";
             this.groupBoxInput.ResumeLayout(false);
             this.groupBoxInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trigramDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unigramDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bigramDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,12 +206,15 @@
         private System.Windows.Forms.GroupBox groupBoxInput;
         private System.Windows.Forms.TextBox browseFileName;
         private System.Windows.Forms.Button browseFileBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView trigramDataGridView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView unigramDataGridView;
+        private System.Windows.Forms.DataGridView bigramDataGridView;
+        private System.Windows.Forms.Label unigramMsec;
+        private System.Windows.Forms.Label bigramMsec;
+        private System.Windows.Forms.Label trigramMsec;
     }
 }
 
